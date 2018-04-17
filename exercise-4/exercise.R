@@ -47,6 +47,10 @@ mean(only_to_seatac$time_diff, na.rm = TRUE)
 # (without showing any other data)!
 
 avg_to_seatac <- flights %>%
-  filter(dest == "SEA") %>%
-  mean(air_time, na.rm = TRUE)
+  filter(dest == "SEA", origin == "JFK") %>%
+  summarize(
+    mean = mean(air_time, na.rm = TRUE),
+    min = min(air_time, na.rm = TRUE),
+    max = max(air_time, na.rm = TRUE),
+    )
   
